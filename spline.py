@@ -61,7 +61,6 @@ for lin in range(0, n):
         else:
             linha.append(0)
     A.append(linha)
-print(A)
 
 # Vetor D
 n = 5
@@ -70,3 +69,30 @@ D = n * [0]
 # Vetor P
 n = 5
 P = n * [0]
+
+class spline:
+    def __init__(this, pontos):
+        this.pontos = pontos
+
+    def calculaSpline(uniforme = True, aberta = True, tensao):
+        n = len(pontos) # número de pontos
+        h = [] * (n + 1) # 1 a mais
+        if (uniforme == true):
+            h = [1] * (n + 1)
+        else:
+            for i in range(1, len(h) - 1): # exceto primeiro e último
+                ponto0 = pontos[i, 0]
+                ponto1 = pontos[i, 1]
+                distancia = (ponto0**2 + ponto1**2)**0.5
+                h[i] = distancia
+    
+            # setando primeiro e último
+            if(aberta == True):
+                h[0] = h[-1] = 0
+            else:
+                ponto0 = pontos[-1, 0]
+                ponto1 = pontos[-1, 1]
+                distancia = (ponto0**2 + ponto1**2)**0.5
+                h[0] = h[-1] = distancia
+
+
